@@ -1,0 +1,13 @@
+diff --git a/src/Plugin/Block/InlineBlock.php b/src/Plugin/Block/InlineBlock.php
+index cfd853f..60e0837 100644
+--- a/src/Plugin/Block/InlineBlock.php
++++ b/src/Plugin/Block/InlineBlock.php
+@@ -216,7 +216,7 @@ class InlineBlock extends BlockBase implements ContainerFactoryPluginInterface,
+    */
+   public function build() {
+     $block = $this->getEntity();
+-    return $this->entityTypeManager->getViewBuilder($block->getEntityTypeId())->view($block, $this->configuration['view_mode']);
++	return !empty($block) ? $this->entityTypeManager->getViewBuilder($block->getEntityTypeId())->view($block, $this->configuration['view_mode']) : [];
+   }
+ 
+   /**

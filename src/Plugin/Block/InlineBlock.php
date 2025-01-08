@@ -216,7 +216,7 @@ class InlineBlock extends BlockBase implements ContainerFactoryPluginInterface, 
    */
   public function build() {
     $block = $this->getEntity();
-    return $this->entityTypeManager->getViewBuilder($block->getEntityTypeId())->view($block, $this->configuration['view_mode']);
+	return !empty($block) ? $this->entityTypeManager->getViewBuilder($block->getEntityTypeId())->view($block, $this->configuration['view_mode']) : [];
   }
 
   /**
